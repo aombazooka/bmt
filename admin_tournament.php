@@ -199,17 +199,21 @@ if (!$activeTournament) {
 
                     <!-- Right Column: Player Checklist & Quick Add -->
                     <div class="w-full md:w-[350px] p-4 md:p-6 flex flex-col h-[50vh] md:h-auto overflow-y-auto">
-                        <div class="flex justify-between items-center mb-4 mt-8 md:mt-0">
+                        <div class="flex justify-between items-center mb-3 mt-8 md:mt-0">
                             <h4 class="font-semibold text-brown-900 text-base">รายชื่อผู้เล่น</h4>
+                            <button type="button" onclick="document.getElementById('quickAddContainer').classList.toggle('hidden')" class="text-[10px] font-medium text-brown-700 bg-brown-50 hover:bg-brown-100 px-2 py-1.5 rounded-lg border border-brown-200 transition flex items-center gap-1 shadow-sm">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                เพิ่มด่วน
+                            </button>
                         </div>
 
                         <!-- Quick Add Player Form -->
-                        <div class="mb-4 bg-cream-50 border border-cream-200 rounded-xl p-3">
-                            <div class="text-xs font-semibold text-brown-800 mb-2">เพิ่มผู้เล่นด่วน</div>
+                        <div id="quickAddContainer" class="hidden mb-3 bg-cream-50 border border-cream-200 rounded-xl p-3 shadow-inner">
+                            <div class="text-[10px] font-semibold text-brown-800 mb-2">เพิ่มผู้เล่นด่วน (เพิ่มปุ๊บ สุ่มได้เลย)</div>
                             <div class="flex flex-col gap-2">
-                                <input type="text" id="quickAddName" placeholder="ชื่อผู้เล่น..." class="w-full text-xs border border-cream-200 rounded-lg p-2 outline-none focus:border-brown-400 bg-white">
+                                <input type="text" id="quickAddName" placeholder="ชื่อผู้เล่น..." class="w-full text-xs border border-cream-200 rounded-lg p-2 outline-none focus:border-brown-400 bg-white shadow-sm">
                                 <div class="flex gap-1.5">
-                                    <select id="quickAddTier" class="flex-1 text-xs border border-cream-200 rounded-lg p-2 outline-none focus:border-brown-400 bg-white text-stone-600 cursor-pointer">
+                                    <select id="quickAddTier" class="flex-1 text-xs border border-cream-200 rounded-lg p-2 outline-none focus:border-brown-400 bg-white text-stone-600 cursor-pointer shadow-sm">
                                         <option value="S">มือ S</option>
                                         <option value="A">มือ A</option>
                                         <option value="B">มือ B</option>
@@ -235,7 +239,7 @@ if (!$activeTournament) {
                         </div>
 
                         <!-- Player List Checkbox Container -->
-                        <div class="flex-1 border border-cream-100 rounded-xl overflow-y-auto max-h-[250px] md:max-h-none p-3 space-y-2" id="wheelPlayersList">
+                        <div class="flex-1 border border-cream-100 rounded-xl overflow-y-auto min-h-0 p-3 space-y-2 bg-white" id="wheelPlayersList">
                             <!-- Checkboxes populated by JS -->
                         </div>
                     </div>
