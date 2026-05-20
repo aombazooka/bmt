@@ -142,9 +142,15 @@ if (!$activeTournament) {
 
             <!-- Wheel Modal -->
             <div id="wheelModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-50 items-center justify-center p-4">
-                <div class="bg-white rounded-3xl shadow-xl border border-cream-200 w-full max-w-4xl overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-auto max-h-[90vh]">
+                <div class="bg-white rounded-3xl shadow-xl border border-cream-200 w-full max-w-4xl overflow-hidden flex flex-col md:flex-row h-[90vh] md:h-auto max-h-[90vh] relative">
+                    
+                    <!-- Global Close Button (Mobile Friendly) -->
+                    <button type="button" onclick="closeWheelModal()" class="absolute top-3 right-3 md:top-4 md:right-4 z-50 p-2 bg-white/80 backdrop-blur-sm rounded-full text-stone-400 hover:text-stone-600 hover:bg-cream-100 shadow-sm border border-cream-200 transition">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+
                     <!-- Left Column: Wheel & Results -->
-                    <div class="flex-1 p-6 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-cream-100 bg-cream-50/30 overflow-y-auto">
+                    <div class="flex-1 p-4 pt-10 md:p-6 md:pt-6 flex flex-col items-center justify-start md:justify-center border-b md:border-b-0 md:border-r border-cream-100 bg-cream-50/30 overflow-y-auto">
                         <div class="text-center mb-4">
                             <h3 class="text-xl font-semibold text-brown-900" id="wheelModalTitle">สุ่มผู้เล่นสำหรับ ทีมที่ 1</h3>
                             <p class="text-xs text-stone-500 mt-1">หมุนสุ่มรายชื่อผู้เล่นทีละคนเพื่อจัดเป็นคู่</p>
@@ -192,12 +198,9 @@ if (!$activeTournament) {
                     </div>
 
                     <!-- Right Column: Player Checklist & Quick Add -->
-                    <div class="w-full md:w-80 p-6 flex flex-col h-[50vh] md:h-auto overflow-y-auto">
-                        <div class="flex justify-between items-center mb-4">
-                            <h4 class="font-semibold text-brown-900 text-base">รายชื่อในวงล้อ</h4>
-                            <button type="button" onclick="closeWheelModal()" class="text-stone-400 hover:text-stone-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </button>
+                    <div class="w-full md:w-[350px] p-4 md:p-6 flex flex-col h-[50vh] md:h-auto overflow-y-auto">
+                        <div class="flex justify-between items-center mb-4 mt-8 md:mt-0">
+                            <h4 class="font-semibold text-brown-900 text-base">รายชื่อผู้เล่น</h4>
                         </div>
 
                         <!-- Quick Add Player Form -->
