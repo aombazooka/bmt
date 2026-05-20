@@ -154,6 +154,10 @@ if (!$activeTournament) {
                         <div class="text-center mb-4">
                             <h3 class="text-xl font-semibold text-brown-900" id="wheelModalTitle">สุ่มผู้เล่นสำหรับ ทีมที่ 1</h3>
                             <p class="text-xs text-stone-500 mt-1">หมุนสุ่มรายชื่อผู้เล่นทีละคนเพื่อจัดเป็นคู่</p>
+                            <button type="button" onclick="document.getElementById('wheelRightColumn').classList.toggle('hidden'); document.getElementById('wheelRightColumn').classList.toggle('flex');" class="mt-3 text-[10px] bg-white hover:bg-cream-100 text-brown-800 border border-brown-200 px-3 py-1.5 rounded-full font-medium transition flex items-center justify-center gap-1 shadow-sm mx-auto">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                                จัดการรายชื่อในวงล้อ
+                            </button>
                         </div>
                         
                         <!-- Canvas Container -->
@@ -198,7 +202,7 @@ if (!$activeTournament) {
                     </div>
 
                     <!-- Right Column: Player Checklist & Quick Add -->
-                    <div class="w-full md:w-[350px] p-4 md:p-6 flex flex-col h-[50vh] md:h-auto overflow-y-auto">
+                    <div id="wheelRightColumn" class="hidden w-full md:w-[350px] p-4 md:p-6 flex-col h-[50vh] md:h-auto overflow-y-auto">
                         <div class="flex justify-between items-center mb-3 mt-8 md:mt-0">
                             <h4 class="font-semibold text-brown-900 text-base">รายชื่อผู้เล่น</h4>
                             <button type="button" onclick="document.getElementById('quickAddContainer').classList.toggle('hidden')" class="text-[10px] font-medium text-brown-700 bg-brown-50 hover:bg-brown-100 px-2 py-1.5 rounded-lg border border-brown-200 transition flex items-center gap-1 shadow-sm">
