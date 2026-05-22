@@ -522,6 +522,12 @@ if (!$activeTournament) {
                         wheelPlayers = wheelPlayers.filter(p => String(p.id) !== String(draftP2.id));
                     }
                     
+                    // Shuffle wheelPlayers so they aren't sorted by tier
+                    for (let i = wheelPlayers.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [wheelPlayers[i], wheelPlayers[j]] = [wheelPlayers[j], wheelPlayers[i]];
+                    }
+                    
                     drawWheel();
                 }
 
