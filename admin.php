@@ -178,8 +178,8 @@ foreach ($stmt->fetchAll() as $row) {
                 <a href="admin_tournament.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-3 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ทัวร์นาเมนต์</a>
                 <a href="players.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-3 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ผู้เล่น</a>
                 <a href="player_stats.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm text-green-700">🏆 สถิติ</a>
-                <a href="index.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนปกติ</a>
-                <a href="tournament.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนทัวร์</a>
+                <a href="normal.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนปกติ</a>
+                <a href="index.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนทัวร์</a>
                 <div class="h-6 w-px bg-cream-200 mx-2"></div>
                 <a href="logout.php" class="text-red-400 hover:text-red-600 font-medium text-xs md:text-sm py-2 px-2 transition">ออก</a>
             </div>

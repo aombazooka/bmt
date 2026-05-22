@@ -90,8 +90,8 @@ function getStatusBadge($status) {
                 <a href="admin.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-3 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">จัดการสนาม</a>
                 <a href="players.php" class="text-brown-900 bg-cream-100 px-3 md:px-4 py-2 rounded-full font-medium text-xs md:text-sm border border-cream-200 shadow-sm transition">ผู้เล่น</a>
                 <a href="player_stats.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm text-green-700">🏆 สถิติ</a>
-                <a href="index.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนปกติ</a>
-                <a href="tournament.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนทัวร์</a>
+                <a href="normal.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนปกติ</a>
+                <a href="index.php" class="text-stone-500 hover:text-brown-800 hover:bg-cream-50 px-2 md:px-4 py-2 rounded-full font-medium transition text-xs md:text-sm">ดูคะแนนทัวร์</a>
                 <div class="h-6 w-px bg-cream-200 mx-2"></div>
                 <a href="logout.php" class="text-red-400 hover:text-red-600 font-medium text-xs md:text-sm py-2 px-2 transition">ออก</a>
             </div>

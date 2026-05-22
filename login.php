@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         
         <div class="mt-8 text-center border-t border-cream-100 pt-6">
-            <a href="index.php" class="text-brown-400 hover:text-brown-600 text-sm transition font-light">← กลับไปหน้าตารางคะแนน</a>
+            <a href="normal.php" class="text-brown-400 hover:text-brown-600 text-sm transition font-light">← กลับไปหน้าตารางคะแนน</a>
         </div>
     </div>
 

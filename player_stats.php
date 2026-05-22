@@ -48,7 +48,7 @@ $players = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <p class="text-brown-600 text-sm md:text-base font-light">ข้อมูลสะสมตลอดการใช้งาน (ไม่ล้างหาย)</p>
             </div>
             <div class="flex gap-3">
-                <a href="tournament.php" class="px-6 py-2.5 rounded-full bg-white text-brown-800 hover:bg-cream-100 transition text-sm font-medium border border-cream-200 shadow-sm">
+                <a href="index.php" class="px-6 py-2.5 rounded-full bg-white text-brown-800 hover:bg-cream-100 transition text-sm font-medium border border-cream-200 shadow-sm">
                     กลับหน้าทัวร์นาเมนต์
                 </a>
                 <?php if(isset($_SESSION['admin_auth']) && $_SESSION['admin_auth']): ?>
