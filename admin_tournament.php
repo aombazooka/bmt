@@ -611,8 +611,35 @@ if (!$activeTournament) {
                     
                     initAudio();
                     isSpinning = true;
+                    let winnerIdx;
+                    let validIndices = [];
                     
-                    const winnerIdx = Math.floor(Math.random() * wheelPlayers.length);
+                    // Smart Balancing Logic for Player 2
+                    if (draftP1 !== null) {
+                        const getTierVal = (tier) => {
+                            const t = { 'S': 5, 'A': 4, 'B': 3, 'C': 2, 'Beginner': 1 };
+                            return t[tier] || 1;
+                        };
+                        const p1Val = getTierVal(draftP1.skill_tier);
+                        
+                        for (let i = 0; i < wheelPlayers.length; i++) {
+                            const p2Val = getTierVal(wheelPlayers[i].skill_tier);
+                            const sum = p1Val + p2Val;
+                            // A balanced pair should sum between 5 and 7 (e.g. S+Beginner=6, A+C=6, B+B=6)
+                            if (sum >= 5 && sum <= 7) {
+                                validIndices.push(i);
+                            }
+                        }
+                    }
+                    
+                    if (validIndices.length > 0) {
+                        // Pick randomly from the balanced candidates
+                        winnerIdx = validIndices[Math.floor(Math.random() * validIndices.length)];
+                    } else {
+                        // Fallback to pure random if it's Player 1 or no balanced players left
+                        winnerIdx = Math.floor(Math.random() * wheelPlayers.length);
+                    }
+                    
                     const winner = wheelPlayers[winnerIdx];
                     
                     const sliceAngle = (2 * Math.PI) / wheelPlayers.length;
