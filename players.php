@@ -123,9 +123,23 @@ function getStatusBadge($status) {
             </form>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div class="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="relative w-full sm:w-80">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-4 w-4 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <input type="text" id="playerSearch" onkeyup="filterPlayers()" placeholder="ค้นหาชื่อผู้เล่น..." class="w-full pl-10 pr-4 py-2.5 border border-cream-200 rounded-xl focus:ring-1 focus:ring-brown-400 outline-none shadow-sm text-sm">
+            </div>
+            <div class="text-sm text-stone-500 font-medium">
+                รวมผู้เล่นทั้งหมด <span class="font-semibold text-brown-900"><?= count($players) ?></span> คน
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="playersGrid">
             <?php foreach($players as $p): ?>
-                <div class="bg-white rounded-2xl shadow-sm border <?= $p['status'] == 'Ready' ? 'border-green-100 border-l-4 border-l-green-400' : ($p['status'] == 'Playing' ? 'border-orange-100 border-l-4 border-l-orange-400' : 'border-stone-100 border-l-4 border-l-stone-300') ?> p-5 flex flex-col justify-between hover:shadow-md transition">
+                <div data-name="<?= htmlspecialchars(strtolower($p['name'])) ?>" class="player-card bg-white rounded-2xl shadow-sm border <?= $p['status'] == 'Ready' ? 'border-green-100 border-l-4 border-l-green-400' : ($p['status'] == 'Playing' ? 'border-orange-100 border-l-4 border-l-orange-400' : 'border-stone-100 border-l-4 border-l-stone-300') ?> p-5 flex flex-col justify-between hover:shadow-md transition">
                     <div class="flex justify-between items-start mb-4">
                         <div class="flex-1 mr-2">
                             <div class="font-semibold text-lg text-brown-900 mb-1"><?= htmlspecialchars($p['name']) ?></div>
@@ -168,5 +182,20 @@ function getStatusBadge($status) {
         
     </div>
 
+    <script>
+        function filterPlayers() {
+            let input = document.getElementById('playerSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.player-card');
+            
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name');
+                if (name.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

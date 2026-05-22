@@ -297,13 +297,8 @@ if (!$activeTournament) {
                 function autoBalanceTeams() {
                     let count = parseInt(document.getElementById('teamCount').value);
                     let requiredPlayers = count * 2;
-                    let availPlayers = [...players]; // Clone array
+                    let availPlayers = players.filter(p => p.status === 'Ready');
                     
-                    if (availPlayers.length < requiredPlayers) {
-                        alert(`มีนักกีฬาที่ตั้งสถานะ "พร้อมลงเล่น" เพียง ${availPlayers.length} คน แต่ต้องการ ${requiredPlayers} คน กรุณาเพิ่มจำนวนคนที่พร้อม หรือลดจำนวนทีมลง`);
-                        return;
-                    }
-
                     // Shuffle array function
                     function shuffle(array) {
                         for (let i = array.length - 1; i > 0; i--) {
@@ -321,6 +316,7 @@ if (!$activeTournament) {
                     // Snake draft to balance teams
                     let teamsData = Array.from({length: count}, () => []);
                     for (let i = 0; i < requiredPlayers; i++) {
+                        if (i >= availPlayers.length) break;
                         // Determine which team gets the player
                         let round = Math.floor(i / count);
                         let teamIdx = round % 2 === 0 ? (i % count) : (count - 1 - (i % count));
@@ -332,9 +328,12 @@ if (!$activeTournament) {
                         let select1 = document.querySelector(`select[name="teams[${i}][p1]"]`);
                         let select2 = document.querySelector(`select[name="teams[${i}][p2]"]`);
                         
-                        if (teamsData[i-1] && teamsData[i-1].length >= 2) {
-                            select1.value = teamsData[i-1][0].id;
-                            select2.value = teamsData[i-1][1].id;
+                        select1.value = '';
+                        select2.value = '';
+                        
+                        if (teamsData[i-1]) {
+                            if (teamsData[i-1].length > 0) select1.value = teamsData[i-1][0].id;
+                            if (teamsData[i-1].length > 1) select2.value = teamsData[i-1][1].id;
                         }
                     }
                 }
