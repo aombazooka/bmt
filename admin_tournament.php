@@ -713,7 +713,12 @@ if (!$activeTournament) {
                         updateBtnSpinText();
                         
                         const confirmBtn = document.getElementById('btnConfirmDraft');
-                        confirmBtn.innerText = `ยืนยันเลือกคู่นี้เข้า ทีมที่ ${targetTeamIndex}`;
+                        const teamCount = parseInt(document.getElementById('teamCount').value);
+                        if (targetTeamIndex < teamCount) {
+                            confirmBtn.innerText = `ยืนยัน ทีมที่ ${targetTeamIndex} & สุ่มทีมถัดไป ➔`;
+                        } else {
+                            confirmBtn.innerText = `ยืนยัน ทีมที่ ${targetTeamIndex} (เสร็จสิ้น) ✔️`;
+                        }
                         confirmBtn.classList.remove('hidden');
                         confirmBtn.classList.add('flex');
                         
@@ -790,7 +795,14 @@ if (!$activeTournament) {
                         select2.value = draftP2.id;
                     }
                     
-                    closeWheelModal();
+                    const teamCount = parseInt(document.getElementById('teamCount').value);
+                    if (targetTeamIndex < teamCount) {
+                        // Auto-advance to the next team
+                        openWheelModalForTeam(targetTeamIndex + 1);
+                    } else {
+                        // All teams filled or reached the end, close modal
+                        closeWheelModal();
+                    }
                 }
 
                 function applyViewFilter(filter) {
