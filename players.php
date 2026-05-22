@@ -27,6 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     exit;
 }
 
+// Handle Tier Change
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'tier') {
+    $pid = $_POST['player_id'];
+    $tier = $_POST['tier'];
+    $stmt = $pdo->prepare("UPDATE players SET skill_tier = ? WHERE id = ?");
+    $stmt->execute([$tier, $pid]);
+    header("Location: players.php");
+    exit;
+}
+
 // Handle Status Change
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'status') {
     $pid = $_POST['player_id'];
@@ -117,9 +127,22 @@ function getStatusBadge($status) {
             <?php foreach($players as $p): ?>
                 <div class="bg-white rounded-2xl shadow-sm border <?= $p['status'] == 'Ready' ? 'border-green-100 border-l-4 border-l-green-400' : ($p['status'] == 'Playing' ? 'border-orange-100 border-l-4 border-l-orange-400' : 'border-stone-100 border-l-4 border-l-stone-300') ?> p-5 flex flex-col justify-between hover:shadow-md transition">
                     <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <div class="font-semibold text-lg text-brown-900"><?= htmlspecialchars($p['name']) ?></div>
-                            <div class="text-xs text-brown-400 uppercase tracking-widest mt-0.5 font-medium">มือระดับ <?= htmlspecialchars($p['skill_tier']) ?></div>
+                        <div class="flex-1 mr-2">
+                            <div class="font-semibold text-lg text-brown-900 mb-1"><?= htmlspecialchars($p['name']) ?></div>
+                            <form method="POST" class="inline-block">
+                                <input type="hidden" name="action" value="tier">
+                                <input type="hidden" name="player_id" value="<?= $p['id'] ?>">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[11px] text-brown-400 uppercase tracking-widest font-medium">มือระดับ</span>
+                                    <select name="tier" onchange="this.form.submit()" class="text-xs bg-cream-50 border border-cream-200 rounded-md px-1.5 py-0.5 outline-none focus:border-brown-400 cursor-pointer text-brown-700 font-semibold shadow-sm hover:bg-cream-100 transition <?= $p['status'] == 'Playing' ? 'opacity-50 cursor-not-allowed' : '' ?>" <?= $p['status'] == 'Playing' ? 'disabled' : '' ?>>
+                                        <option value="S" <?= $p['skill_tier'] == 'S' ? 'selected' : '' ?>>S</option>
+                                        <option value="A" <?= $p['skill_tier'] == 'A' ? 'selected' : '' ?>>A</option>
+                                        <option value="B" <?= $p['skill_tier'] == 'B' ? 'selected' : '' ?>>B</option>
+                                        <option value="C" <?= $p['skill_tier'] == 'C' ? 'selected' : '' ?>>C</option>
+                                        <option value="Beginner" <?= $p['skill_tier'] == 'Beginner' ? 'selected' : '' ?>>Beginner</option>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
                         <div class="w-24 shrink-0">
                             <?= getStatusBadge($p['status']) ?>
