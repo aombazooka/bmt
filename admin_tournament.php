@@ -116,10 +116,16 @@ if (!$activeTournament) {
                             <option value="8">8 ทีม</option>
                         </select>
                     </div>
-                    <button type="button" onclick="autoBalanceTeams()" class="w-full md:w-auto bg-brown-100 hover:bg-brown-200 text-brown-800 border border-brown-300 font-medium py-3 px-6 rounded-xl shadow-sm transition flex items-center justify-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v6h6"/></svg>
-                        สุ่มจัดทีมอัตโนมัติ (สมดุลมือ)
-                    </button>
+                    <div class="flex flex-col md:flex-row gap-3 w-full md:w-auto mt-4 md:mt-0">
+                        <button type="button" onclick="autoBalanceTeams()" class="flex-1 bg-brown-100 hover:bg-brown-200 text-brown-800 border border-brown-300 font-medium py-3 px-6 rounded-xl shadow-sm transition flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v6h6"/></svg>
+                            จัดทีมอัตโนมัติ (สุ่ม)
+                        </button>
+                        <button type="button" onclick="openWheelModalForTeam(1)" class="flex-1 bg-white hover:bg-cream-50 text-brown-800 border border-cream-200 font-medium py-3 px-6 rounded-xl shadow-sm transition flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                            สุ่มด้วยวงล้อ (ต่อเนื่อง)
+                        </button>
+                    </div>
                 </div>
 
                 <form action="api_tournament.php" method="POST" id="createTournamentForm">
@@ -272,9 +278,6 @@ if (!$activeTournament) {
                             <div class="bg-cream-50 border border-cream-200 rounded-2xl p-4">
                                 <div class="flex justify-between items-center mb-3">
                                     <div class="font-medium text-brown-800">ทีมที่ ${i}</div>
-                                    <button type="button" onclick="openWheelModalForTeam(${i})" class="text-xs bg-brown-800 hover:bg-brown-900 text-white font-medium py-1 px-3 rounded-full shadow-sm transition flex items-center gap-1 active:scale-95">
-                                        🎡 สุ่มด้วยวงล้อ
-                                    </button>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <select name="teams[${i}][p1]" required class="w-full bg-white border border-cream-200 rounded-lg p-2.5 text-sm outline-none focus:border-brown-400">
